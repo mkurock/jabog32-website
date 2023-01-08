@@ -1,0 +1,107 @@
+<mat-card class="example-card" style="flex-basis: 100%;">
+    <mat-card-header>
+        <h3>NOTAMS</h3>
+    </mat-card-header>
+    <mat-card-content>
+        <table class="jabog32-dashboard">
+            <tr>
+                <th width=1></th>
+                <th>Text</th>
+                <th width='200'>Datum</th>
+                <th class="actions"></th>
+            </tr>
+            <tr *ngFor="let item of home.notams; let i = index">
+               <td>{{ i+1 }}</td>
+               <td>{{ item.text }}</td>
+               <td>{{ item.createdAt | date : 'dd.MM.yy HH:mm' }}</td>
+               <td class="actions">
+                   <a (click)="acknowledge(item.id)"><fa-icon icon="check"></fa-icon></a>
+               </td>
+            </tr>
+        </table>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+        <h3>Aktuelle Abmeldungen</h3>
+    </mat-card-header>
+    <mat-card-content>
+        <table class="jabog32-dashboard">
+            <tr>
+                <th>Pilot</th>
+                <th width='100'>Bis</th>
+                <th>Kommentar</th>
+            </tr>
+            <tr *ngFor="let item of home.absences; let i = index">
+               <td>{{ item.user.userName }}</td>
+               <td>{{ item.end | date : 'dd.MM.' }}</td>
+               <td>{{ item.comment }}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+        <h3>Neusten Bewerbungen</h3>
+    </mat-card-header>
+    <mat-card-content>
+        <table class="jabog32-dashboard">
+            <tr>
+                <th width=1></th>
+                <th width='200'>Datum</th>
+                <th>Callsign</th>
+                <th>Vorname</th>
+                <th>Muster</th>
+                <th>Status</th>
+            </tr>
+            <tr *ngFor="let item of home.userapplications; let i = index">
+               <td>{{ i+1 }}</td>
+               <td>{{ item.createdAt | date : 'dd.MM.yy HH:mm' }}</td>
+               <td>{{ item.callsign }}</td>
+               <td>{{ item.firstName }}</td>
+               <td>{{ item.aircraft?.name }}</td>
+               <td>{{ item.status }}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card style="flex-basis: 100%;">
+      <mat-card-header>
+          <h3>Letzte Einsätze</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="jabog32-dashboard">
+            <tr>
+                <th width=50>#</th>
+                <th>Titel</th>
+                <th>Einsatzort</th>
+                <th>Einsatzart</th>
+                <th>Einsatzdatum</th>
+                <th>Piloten</th>
+                <th>Flugzeit</th>
+            </tr>
+            <tr *ngFor="let item of home.logbooks; let i = index">
+               <td>{{ item.id }}</td>
+               <td>{{ item.title }}</td>
+               <td>{{ item.location }}</td>
+               <td>{{ item.type }}</td>
+               <td>{{ item.departure | date: 'dd.MM.yyyy'}}</td>
+              <td width="500">
+                <!-- <ul style="list-style: none;">
+                  <li *ngFor="let d of item.logbookDetails">{{ d.pilot?.user?.userName }} ({{d.aircraft?.name}})</li>
+                </ul> -->
+                <table class="pilot-table">
+                    <tr style="height:20px" *ngFor="let d of item.logbookDetails">
+                        <td width="300">{{ d.pilot?.user?.userName }}</td>
+                        <td width="200">({{d.aircraft?.name}})</td>
+                    </tr>
+                </table>
+              </td>
+              <td>
+                  {{item.flightTime}}
+              </td>
+            </tr>
+        </table>
+      </mat-card-content>
+  </mat-card>

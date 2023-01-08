@@ -1,0 +1,24 @@
+<div class="dialog-header">
+    Staffel
+</div>
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input type="text" [(ngModel)]="item.number" matInput placeholder="Text" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input type="text" [(ngModel)]="item.name" matInput placeholder="Text" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Patch Url</mat-label>
+        <input type="text" [(ngModel)]="item.patchUrl" matInput placeholder="Text" />
+    </mat-form-field>
+    <div class="preview" [style.backgroundImage]="'url(' + item.patchUrl + ')'">
+        Vorschau
+    </div>
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

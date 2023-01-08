@@ -1,0 +1,58 @@
+<div class="tw-container">
+  <h1 style="text-align:center;" class="mb-10 pt-5">Abschussstatistik</h1>
+  <table style="margin:auto;" class="text-sm md:text-base table w-11/12 with-borders table-striped">
+    <thead>
+      <tr>
+        <th class="text-center w-20">Rang</th>
+        <th class="text-left">Pilot</th>
+        <th class="text-right">
+          <span class="hidden md:block">Luftziele Zerstört</span>
+          <span class="md:hidden">Air</span>
+        </th>
+        <th class="text-right">
+          <span class="hidden md:block">Bodenziele Zerstört</span>
+          <span class="md:hidden">Gnd</span>
+        </th>
+        <th class="text-right">
+          <span class="hidden md:block">Strategische Ziele Zerstört</span>
+          <span class="md:hidden">Strat</span>
+        </th>
+        <th class="text-right">
+          <span class="hidden md:block">Flugstunden</span>
+          <span class="md:hidden">FT</span>
+        </th>
+        <th class="text-right">
+          <span class="hidden md:block">Punkte</span>
+          <span class="md:hidden">Pts</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="statistics-body">
+      {{#each data.ranks }}
+      <tr>
+        <td class="text-center">
+          {{#ifEq @index 0}}
+            <i class="fa-solid fa-trophy text-amber-500 text-2xl"></i>
+          {{/ifEq}}
+          {{#ifEq @index 1}}
+            <i class="fa-solid fa-trophy text-gray-400 text-2xl"></i>
+          {{/ifEq}}
+          {{#ifEq @index 2}}
+            <i class="fa-solid fa-trophy text-amber-800 text-2xl"></i>
+          {{/ifEq}}
+          {{#ifGt @index 2 }}
+            {{incr @index}}
+          {{/ifGt}}
+
+        </td>
+        <td><a class="text-black" href="/pilots/detail/{{pilotId}}">{{userName}}</a></td>
+        <td class="text-right">{{airTargets}}</td>
+        <td class="text-right">{{groundTargets}}</td>
+        <td class="text-right">{{strategicTargets}}</td>
+        <td class="text-right">{{round flightHours 2}}</td>
+        <td class="text-right">{{round total 2}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

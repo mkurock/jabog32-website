@@ -1,0 +1,34 @@
+<h1>Abmeldungen</h1>
+<div class="w90 menu-row">
+  <div>
+    <button mat-raised-button (click)="add()"><fa-icon icon="plus"></fa-icon><span style="margin-left: 10px">abmelden</span></button>
+    <br />
+    <br />
+  </div>
+  <div style="text-align: right;">
+    <mat-button-toggle-group [(ngModel)]='filter' (change)='onFilterChange()' aria-label="Favorite Color">
+      <mat-button-toggle value="latest">Aktuelle</mat-button-toggle>
+      <mat-button-toggle value="all">Alle</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<table class="w90 jabog32">
+    <tr>
+        <th width=1>#</th>
+        <th>Pilot</th>
+        <th>Beginn</th>
+        <th>Ende</th>
+        <th>Kommentar</th>
+        <th width=1></th>
+    </tr>
+    <tr *ngFor="let absence of absences | async; let i = index">
+       <td>{{ i+1 }}</td>
+       <td>{{ absence.user?.userName }}</td>
+       <td>{{ absence.begin | date : 'dd.MM.yy' }}</td>
+       <td>{{ absence.end | date : 'dd.MM.yy' }}</td>
+       <td>{{ absence.comment }}</td>
+       <td>
+           <a (click)='delete(absence.id)' *ngIf="absence.user?.id == currentUser.id"><fa-icon icon='trash'></fa-icon></a>
+       </td>
+    </tr>
+</table>

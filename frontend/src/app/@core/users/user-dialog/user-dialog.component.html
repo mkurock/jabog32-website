@@ -1,0 +1,19 @@
+<div class="dialog-header">
+    Benutzer
+</div>
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input type="text" [(ngModel)]="item.userName" matInput placeholder="Text" />
+    </mat-form-field>
+    <h3>Berechtigungen</h3>
+    <div *ngFor="let r of roles">
+        <mat-checkbox [(ngModel)]="r.checked">
+            {{ r.name }}
+        </mat-checkbox>
+    </div>
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

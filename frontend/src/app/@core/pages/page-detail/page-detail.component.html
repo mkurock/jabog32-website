@@ -1,0 +1,25 @@
+<h1>{{ item?.name }}</h1>
+<mat-form-field class="example-full-width">
+  <mat-label>Titel</mat-label>
+  <input rows="5" [(ngModel)]="item.title" matInput placeholder="Titel" />
+</mat-form-field>
+<editor
+apiKey="pdtdbj403272qhsf6oxge3fqmfii1jkw65f70k1swnr52li4"
+[(ngModel)]="item.content"
+[init]="{
+  height: 500,
+  menubar: true,
+  plugins: [
+    'code print preview searchreplace autolink directionality',
+    'visualblocks visualchars fullscreen image link media template codesample',
+    'table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists',
+    'wordcount imagetools textpattern help'
+  ],
+  toolbar:
+    'code formatselect | bold italic strikethrough forecolor backcolor | link image | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat'
+}"
+></editor>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

@@ -1,0 +1,25 @@
+<h1>Muster</h1>
+<div class="w90">
+    <button mat-raised-button (click)="addOrEdit()"><fa-icon icon="plus"></fa-icon></button>
+    <br />
+    <br />
+</div>
+<table class="w90 jabog32">
+    <tr>
+        <th>Name</th>
+        <th>Für Bewerbung?</th>
+        <th>Zuletzt geändert am</th>
+        <th>Zuletzt geändert von</th>
+        <th class='actions'></th>
+    </tr>
+    <tr *ngFor="let item of aircraft$ | async; let i = index">
+       <td>{{ item.name }}</td>
+       <td><fa-icon icon="check" *ngIf='item.availableForApplications'></fa-icon></td>
+       <td>{{ item.modifiedAt | date : 'dd.MM.yy HH:mm' }}</td>
+       <td>{{ item.modifiedBy?.userName }}</td>
+       <td class='actions'>
+           <a (click)='addOrEdit(item)'><fa-icon icon='edit'></fa-icon></a>
+           <a (click)='delete(item.id)'><fa-icon icon='trash'></fa-icon></a>
+       </td>
+    </tr>
+</table>

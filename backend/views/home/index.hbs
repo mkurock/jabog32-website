@@ -1,0 +1,94 @@
+<div class="home-container">
+  <div class="mx-2 lg:mx-8 xl:flex">
+    <div class="bg-white mb-4 basis-[74.7%] md:flex">
+      <div class="w-full md:flex">
+        {{#if data.news.imageUrl}}
+        {{#if data.news.cover }}
+        <div class="w-full flex-1 md:min-w-[300px] h-80 md:h-auto bg-center bg-no-repeat bg-gray-50"
+          style="background-image: url('{{data.news.imageUrl}}'); background-size: cover"></div>
+        {{else}}
+        <div class="w-full flex-1 md:min-w-[300px] h-80 md:h-auto bg-center bg-no-repeat bg-gray-50"
+          style="background-image: url('{{data.news.imageUrl}}'); background-size: contain"></div>
+        {{/if}}
+        {{else}}
+        <div class="w-full flex-1 md:min-w-[300px] h-80 md:h-auto bg-center bg-no-repeat bg-gray-50" style="background-image: url('/assets/images/vJaBoG32-Logo.png');"></div>
+        {{/if}}
+        <div class="p-4 text md:flex-[2]">
+          <h3 class="jb-header">Aktuelles aus dem Geschwader</h3>
+          <h4 class="text-lg">{{data.news.subject}} </h4>
+          <span class="text-sm block mb-3">von {{ data.news.createdBy.userName}} am
+            {{date
+            data.news.createdAt }} Uhr
+          </span>
+          {{{data.news.preview}}}
+          <div><a href="/News">• Weitere Neuigkeiten</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden xl:block basis-4"></div>
+    <div class="bg-white mb-4 p-4 flex-1">
+      <h3 class="jb-header">Willkommen</h3>
+      <div>
+        <p>
+          Das virtuelle Jagdbombergeschwader 32 ist eine deutschsprachige Gemeinschaft von Luftfahrt-Begeisterten,
+          deren Fokus auf der gemeinsamen Simulation militärischer Fliegerei liegt.
+        </p>
+        Auf Grundlage der <b>DCS: Digital Combat Series</b>, ist es unser Ziel, so realitätsnah wie möglich das gesamte Spektrum der militärischen
+        Fliegerei zu simulieren.
+        <p>
+          Die Pflege der Kameradschaft unter unseren Mitgliedern, sowohl online als
+          auch im „richtigen“ Leben, ist ein ebenso wichtiger Aspekt unseres virtuellen Geschwaders wie den guten
+          Kontakt zur internationalen Community und anderen Geschwadern zu pflegen, gemeinsame Events zu veranstalten
+          und Know-How auszutauschen.
+        </p>      
+      </div>
+    </div>
+  </div>
+  <div class="mx-2 lg:mx-8 xl:flex">
+    <div class="block md:flex flex-1">
+      <div class="flex-1 bg-white p-4 mb-4">
+        <h3 class="jb-header">Docs & MODs</h3>
+        {{{data.docs.content}}}
+      </div>
+
+      <div class="hidden md:block basis-4"></div>
+
+      <div class="flex-1 bg-white p-4 mb-4">
+        <h3 class="jb-header">FAQs & Archiv</h3>
+        {{{data.archiv.content}}}
+      </div>
+    </div>
+
+    <div class="hidden xl:block basis-4"></div>
+
+    <div class="block md:flex flex-1">
+      <div class="flex-1 bg-white p-4 mb-4">
+        <h3 class="jb-header">Piloten online</h3>
+        <div>
+          <div id="ts3viewer_964025" style=""> </div>
+
+          <script src="https://static.tsviewer.com/short_expire/js/ts3viewer_loader.js"></script>
+          <script>
+            var ts3v_url_1 = "https://www.tsviewer.com/ts3viewer.php?ID=964025&text=757575&text_size=12&text_family=1&text_s_color=000000&text_s_weight=normal&text_s_style=normal&text_s_variant=normal&text_s_decoration=none&text_i_color=&text_i_weight=normal&text_i_style=normal&text_i_variant=normal&text_i_decoration=none&text_c_color=&text_c_weight=normal&text_c_style=normal&text_c_variant=normal&text_c_decoration=none&text_u_color=000000&text_u_weight=normal&text_u_style=normal&text_u_variant=normal&text_u_decoration=none&text_s_color_h=&text_s_weight_h=bold&text_s_style_h=normal&text_s_variant_h=normal&text_s_decoration_h=none&text_i_color_h=000000&text_i_weight_h=bold&text_i_style_h=normal&text_i_variant_h=normal&text_i_decoration_h=none&text_c_color_h=&text_c_weight_h=normal&text_c_style_h=normal&text_c_variant_h=normal&text_c_decoration_h=none&text_u_color_h=&text_u_weight_h=bold&text_u_style_h=normal&text_u_variant_h=normal&text_u_decoration_h=none&hideEmptyChannels&iconset=default_colored_2014";
+            ts3v_display.init(ts3v_url_1, 964025, 100);
+          </script>
+        </div>
+      </div>
+
+      <div class="hidden md:block basis-4"></div>
+
+      <div class="flex-1 bg-white p-4 mb-4">
+        <h3 class="jb-header">Mehr über uns</h3>
+        <a href="https://www.facebook.com/Virtual-Jabog32-1032811546833808/" target="_blank"><img
+            src="/assets/images/facebook.jpg" /><br /><br /></a>
+        <div class="fb-like" data-href="https://www.facebook.com/Virtual-Jabog32-1032811546833808/" data-layout="button"
+          data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
+        <br /><br /><br />
+        <a href="https://www.youtube.com/channel/UCDTkWQ8GjlRwKRKGPReWWqQ/" target="_blank">
+          <img src="/assets/images/YouTube.jpg" /><br /></a>
+        <div class="g-ytsubscribe" data-channelid="UCDTkWQ8GjlRwKRKGPReWWqQ" data-layout="full" data-count="default">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

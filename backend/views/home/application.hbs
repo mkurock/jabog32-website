@@ -1,0 +1,327 @@
+<style>
+  label {
+    text-align: right;
+  }
+
+  #additionalInfo {}
+
+  form.was-validated input:invalid {
+    border-color: red;
+  }
+
+  form.was-validated input:valid {
+    border-color: green;
+  }
+
+  form.was-validated select:valid {
+    border-color: green;
+  }
+
+  .invalid-feedback {
+    display: none;
+    color: red;
+  }
+
+  .form-control.is-valid,
+  .was-validated input.form-control:valid {
+    border-color: #198754;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  }
+
+  .form-control.is-invalid,
+  .was-validated input.form-control:invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  }
+
+  .is-valid~.valid-feedback,
+  .is-valid~.valid-tooltip,
+  .was-validated :valid~.valid-feedback,
+  .was-validated :valid~.valid-tooltip {
+    display: block;
+  }
+
+  .is-invalid~.invalid-feedback,
+  .is-invalid~.invalid-tooltip,
+  .was-validated :invalid~.invalid-feedback,
+  .was-validated :invalid~.invalid-tooltip {
+    display: block;
+  }
+</style>
+<div>
+  <div class="tw-container text-sm mb-4" style="min-height: unset;">
+    <h2>Aufnahmeantrag</h2>
+    <p>Herzlichen Dank für dein Interesse am virtuellen Jagdbombergeschwader 32. Bevor du dich weiter mit dem
+      Aufnahmeantrag auseinandersetzt, möchten wir betonen, dass wir viel Wert auf eine seriöse Bewerbung
+      legen. Das vJaBoG32 garantiert, dass die gemachten Angaben zur Person ausschließlich zum Zweck des
+      Bewerbungsverfahrens genutzt werden. Die Daten werden weder an Drittpersonen weitergereicht, noch zu
+      Werbezwecken jeglicher Art genutzt.</p>
+    <p>Bevor du das Formular ausfüllst stelle bitte sicher, dass du unsere <a href="/Page/Regeln"
+        target="_blank">Regeln</a> auf der Website genau durchgelesen hast. Klicke bitte <a href="/Page/Datenschutz"
+        target="_blank">hier</a> um unsere Datenschutzerklärung durchzulesen.
+    </p>
+    <!-- <div style='border-left: 3px solid darkred;border-right: 3px solid darkred; padding: 0 15px;'>
+				<h2>Wichtiger Hinweis</h2>
+			    Aktuell können wir, aufgrund der hohen Nachfrage, <span style='font-weight:bold;'>keine</span> weiteren Bewerbungen für <span style='font-weight:bold;'>Flugmuster</span> akzeptieren. ATC Bewerbungen sind weiterhin möglich. Wir werden diese Meldung entfernen und die Muster der Auswahl wieder hinzufügen, sobald sich dies ändert. Danke für euer Verständnis.
+			</div> -->
+  </div>
+
+
+  <div class="tw-container">
+    <form method="post" class="application-form" role="form" novalidate>
+      <div style="margin: auto;">
+        <h3 class="center-header">Persönliche Daten</h3>
+        <div class="flex form-group my-2">
+          <label for="txtFirstname" class="flex-1 pr-5 control-label">Vorname *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="firstName" name="firstName"
+              type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="txtLastname" class="flex-1  pr-5 control-label">Nachname *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="lastName" name="lastName"
+              type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="txtCallsign" class="flex-1  pr-5 control-label">gewünschtes Callsign *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="callsign" name="callsign"
+              type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="numBirthyear" class="flex-1  pr-5 control-label">Geburtsjahr *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="birthYear" name="birthYear"
+              type="number" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Email *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="email" name="email"
+              type="email" value="" required>
+
+            <div class="invalid-feedback">
+              Bitte eine gültige Email angeben
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Wohnort *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="location" name="location"
+              type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <h3 class="center-header">Hard- und Software</h3>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Betriebssystem *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="os" name="os" type="text"
+              value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Internetverbindung *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="internetConnection"
+              name="internetConnection" type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Prozessor / CPU *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="cpu" name="cpu" type="text"
+              value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Arbeitsspeicher / RAM *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="ram" name="ram" type="text"
+              value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Grafikkarte *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="graphicsCard"
+              name="graphicsCard" type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Joystick *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="joystick" name="joystick"
+              type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">sonstige Peripheriegeräte *</label>
+          <div class="flex-1">
+            <input class="form-control" data-val="true" data-val-required="Pflichtfeld" id="additionalPeripharal"
+              name="additionalPeripharal" type="text" value="" required>
+            <div class="invalid-feedback">
+              Erforderlich
+            </div>
+          </div>
+        </div>
+
+        <h3 class="center-header">Zusätzliche Angaben</h3>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Bevorzugtes Flugmuster *</label>
+          <div class="flex-1">
+            <select class="form-control" name="aircraftId" id="aircraftId">
+              {{#each data.aircrafts}}
+              <option value="{{id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Erfahrung in DCS *</label>
+          <div class="flex-1">
+            <select class="form-control" name="experienceDCS" id="experienceDCS">
+              {{#each data.experienceDCS}}
+              <option value="{{.}}">{{.}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Wie lange beschäftigst du dich bereits mit
+            Flugsimulatoren? *</label>
+          <div class="flex-1">
+            <select class="form-control" name="experienceSim" id="experienceSim">
+              {{#each data.experienceSim}}
+              <option value="{{.}}">{{.}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Ist eine berufliche Verbindung zur Fliegerei
+            vorhanden?</label>
+          <div class="flex-1">
+            <input data-val="true" id="commercialAviation" name="commercialAviation" type="checkbox" value="true">
+          </div>
+        </div>
+        <div class="flex form-group my-2">
+          <label for="" class="flex-1  pr-5 control-label">Hiermit akzeptiere ich die <a href="/Page/Regeln">Regeln</a>
+            und erkläre meine Einwilligung zum <a href="/page/Datenschutz" target="_blank">Datenschutz</a> *</label>
+          <div class="flex-1">
+            <input data-val="true" data-val-required="Pflichtfeld" id="acceptedRules" name="acceptedRules" required
+              type="checkbox" value="true">
+            <div class="invalid-feedback">
+              Den Regeln und der Datenschutzeinwilligung muss zugestimmt werden um die Bewerbung einzureichen.
+            </div>
+          </div>
+        </div>
+        <p class="w-full md:max-w-3xl mx-auto mt-8">Um einen ersten Eindruck deiner Person, als auch deiner
+          Beweggründe für
+          die Anmeldung beim
+          virtuellen
+          Jagdbombergeschwader 32 zu erhalten,<br>möchten wir zu unten aufgeführten Punkten gerne Näheres
+          erfahren. Diese Punkte sind für eine weitere Bearbeitung der Bewerbung ausschlaggebend.</p>
+        <div class="w-full md:max-w-3xl mx-auto">
+          <ul class="" style="">
+            <li>Was erwartest du von einem Online Geschwader?</li>
+
+            <li>Wieso hast du dich für das vJaBoG32 entschieden?</li>
+
+            <li>Wie viel Zeit wirst du für dein Hobby aufbringen können? (insbesondere zu den
+              angeführten
+              Trainingszeiten -> siehe Regeln)</li>
+
+            <li>Was du uns sonst noch mitteilen möchtest?</li>
+          </ul>
+          <div class="flex w-full">
+            <textarea class="form-control flex-1 max-w-none my-4" name="additionalInfo" id="additionalInfo" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="flex max-w-3xl mx-auto">
+          <div class="col-sm-offset-2 col-sm-12">
+            <span>Hinweis: Unsere Antwortschreiben landen des öfteren im SPAM-Ordner, direkt nach der
+              Bewerbung solltet ihr eine automatisch erzeugte Eingangsbestätigung per Email
+              erhalten.
+            </span>
+          </div>
+        </div>
+        <div class="flex max-w-3xl mx-auto">
+          <div class="col-sm-offset-2 col-sm-12">
+            <button type="submit" class="p-4 bg-green-700 text-white rounded-md mt-4">Jetzt bewerben</button>
+          </div>
+        </div>
+        </p>
+    </form>
+  </div>
+
+</div>
+</div>
+
+<script>
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.application-form')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>

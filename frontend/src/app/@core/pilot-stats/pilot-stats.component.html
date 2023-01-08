@@ -1,0 +1,59 @@
+<table class="jabog32 w90">
+    <tr>
+        <th>Pilot</th>
+    
+        <th>Einsätze</th>
+        <th>Landing Streak</th>
+        <th>Tode</th>
+        <th>Ejects</th>
+        <th>Flugzeit</th>
+        <th>Starts</th>
+        <th>Landungen</th>
+        <th>Verdienst</th>
+        <th>Missionen gestartet</th>
+        <th>Erfolgreiche Missionen</th>
+        <th>Muster</th>
+        <th># Strukturen zerstört</th>
+        <th># Bodeneinheiten zerstört</th>
+        <th># Flugzeuge zerstört</th>
+        <th># Helikopter zerstört</th>
+        <th># Schiffe zerstört</th>
+        <th>Bittersweet</th>
+        <th>ROZ Verletzungen</th>
+        <th>CV-Anflüge</th>
+        <th>CV-Gesamtpunkte</th>
+        <th>CV-Letzte LSO Bewertung</th>
+        <th>CV-Recovery-Rate</th>
+        <th>CV-Traps</th>
+        <th>CV-mittl. Pkt.</th>
+    </tr>
+    <tr *ngFor="let stat of pilotStats$ | async">
+        <td>{{ stat.Pilotenname }}</td>
+        <td class="ta-right">{{ stat.Einsaetze }}</td>
+        <td class="ta-right">{{ stat.LandingStreak }}</td>
+        <td class="ta-right">{{ stat.Tode }}</td>
+        <td class="ta-right">{{ stat.Ejections }}</td>
+        <td class="ta-right">{{ stat.Flugzeit | number: '1.2-2' }}</td>
+        <td class="ta-right">{{ stat.Starts }}</td>
+        <td class="ta-right">{{ stat.Landungen }}</td>
+        <td class="ta-right">{{ stat.Verdienst | number: '1.0'}}€</td>
+        <td class="ta-right">{{ stat["Missionen gestartet"] }}</td>
+        <td class="ta-right">{{ stat["erfolgreiche Missionen"]  }}</td>
+
+        <td>{{ stat.Flugzeugtyp }}</td>
+
+        <td class="ta-right">{{ stat["zerstoerte Strukturen"] }}</td>
+        <td class="ta-right">{{ stat["zerstoerte Bodeneinheiten"] }}</td>
+        <td class="ta-right">{{ stat["zerstoerte Flugzeuge"] }}</td>
+        <td class="ta-right">{{ stat["zerstoerte Helikopter"] }}</td>
+        <td class="ta-right">{{ stat["zerstoerte Schiffe"] }}</td>
+        <td class="ta-right">{{ stat['Bittersweet'] }}</td>
+        <td class="ta-right">{{ stat['ROZ Verletzungen'] }}</td>
+        <td class="ta-right">{{ stat['CV- Anfluege'] }}</td>
+        <td class="ta-right">{{ stat['CV- Gesamtpunkte'] }}</td>
+        <td class="ta-right">{{ stat['CV- Letzte LSO Bewertung'] }}</td>
+        <td class="ta-right">{{ stat['CV- Recovery-Rate'] }}</td>
+        <td class="ta-right">{{ stat['CV- Traps'] }}</td>
+        <td class="ta-right">{{ stat['CV- mittl. Pkt.'] }}</td>
+    </tr>
+</table>

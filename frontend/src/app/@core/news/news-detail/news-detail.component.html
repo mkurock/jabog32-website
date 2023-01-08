@@ -1,0 +1,53 @@
+<mat-form-field class="example-full-width" style="width: 100%;">
+  <mat-label>Titel</mat-label>
+  <input rows="5" [(ngModel)]="item.subject" matInput placeholder="Titel" />
+</mat-form-field>
+<mat-form-field class="example-full-width" style="width: 100%;">
+  <mat-label>Bild Url (Default JaBoG32 Logo)</mat-label>
+  <input rows="5" [(ngModel)]="item.imageUrl" matInput placeholder="Leer für JaBoG32 Logo" />
+</mat-form-field>
+<mat-checkbox [(ngModel)]="item.cover">
+  Gesamten Bereich mit Bild füllen?
+</mat-checkbox>
+<div class="preview" style="width: 400px;" 
+[style.backgroundSize]="item.cover ? 'cover' : 'contain'"
+[style.backgroundImage]="'url(' + (item.imageUrl ? item.imageUrl : '/assets/images/vJaBoG32-Logo.png') + ')'">
+  Vorschau 
+</div>
+<editor
+apiKey="pdtdbj403272qhsf6oxge3fqmfii1jkw65f70k1swnr52li4"
+[(ngModel)]="item.body"
+[init]="{
+  height: 500,
+  menubar: true,
+  plugins: [
+    'code print preview searchreplace autolink directionality',
+    'visualblocks visualchars fullscreen image link media template codesample',
+    'table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists',
+    'wordcount imagetools textpattern help'
+  ],
+  toolbar:
+    'code formatselect | bold italic strikethrough forecolor backcolor | link image | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat'
+}"
+></editor>
+<h2>Vorschau für Startseite (leer lassen für vollen Newsbeitrag auf der Startseite)</h2>
+<editor
+apiKey="pdtdbj403272qhsf6oxge3fqmfii1jkw65f70k1swnr52li4"
+[(ngModel)]="item.preview"
+[init]="{
+  height: 200,
+  menubar: true,
+  plugins: [
+    'code print preview searchreplace autolink directionality',
+    'visualblocks visualchars fullscreen image link media template codesample',
+    'table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists',
+    'wordcount imagetools textpattern help'
+  ],
+  toolbar:
+    'code formatselect | bold italic strikethrough forecolor backcolor | link image | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat'
+}"
+></editor>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

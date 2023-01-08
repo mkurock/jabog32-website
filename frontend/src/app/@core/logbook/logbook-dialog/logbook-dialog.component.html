@@ -1,0 +1,118 @@
+<div class="dialog-header">
+    Einsatzbericht
+</div>
+<div class="content-cont">
+    <h4>Daten</h4>
+    <mat-form-field class="example-full-width">
+        <mat-label>Titel</mat-label>
+        <input [(ngModel)]="item.title" matInput placeholder="Titel" required />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Einsatzort</mat-label>
+        <input [(ngModel)]="item.location" matInput placeholder="Einsatzort" required />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Einsatzart</mat-label>
+        <input [(ngModel)]="item.type" matInput placeholder="Einsatzart" required />
+    </mat-form-field>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Abflug</mat-label>
+                    <input [(ngModel)]="item.departure" matInput [matDatepicker]="picker" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </td>
+            <td width="90">
+                <mat-form-field style="    width: 35px;">
+                    <mat-label>HH</mat-label>
+                    <input type="number" [(ngModel)]="departure.hh" matInput placeholder="" required />
+                </mat-form-field>
+                :
+                <mat-form-field style="    width: 35px;">
+                    <mat-label>MM</mat-label>
+                    <input type="number" [(ngModel)]="departure.mm" matInput placeholder="" required />
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Landung</mat-label>
+                    <input [(ngModel)]="item.landing" matInput [matDatepicker]="pickerLanding" required>
+                    <mat-datepicker-toggle matSuffix [for]="pickerLanding"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerLanding></mat-datepicker>
+                </mat-form-field>
+            </td>
+            <td width="90">
+                <mat-form-field style="    width: 35px;">
+                    <mat-label>HH</mat-label>
+                    <input type="number" [(ngModel)]="landing.hh" matInput placeholder="" required/>
+                </mat-form-field>
+                :
+                <mat-form-field style="    width: 35px;">
+                    <mat-label>MM</mat-label>
+                    <input type="number" [(ngModel)]="landing.mm" matInput placeholder="" required />
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+    <h4>Teilnehmer</h4>
+    <table class="table table-striped">
+        <tr *ngFor="let entry of item.logbookDetails let i = index">
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Pilot</mat-label>
+                    <mat-select [(ngModel)]="entry.pilot" required>
+                        <mat-option *ngFor="let p of pilots" [value]="p">
+                            {{p.user?.userName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Muster</mat-label>
+                    <mat-select [(ngModel)]="entry.aircraft" required>
+                        <mat-option *ngFor="let a of aircrafts" [value]="a">
+                            {{a.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+            <td style="width:100px;">
+                <mat-form-field class="small-form-field">
+                    <mat-label>Luftziele</mat-label>
+                    <input type="number" [(ngModel)]="entry.airTargets" matInput required>
+                </mat-form-field>
+            </td>
+            <td style="width:100px;">
+                <mat-form-field class="small-form-field">
+                    <mat-label>Bodenziele</mat-label>
+                    <input type="number" [(ngModel)]="entry.groundTargets" matInput required>
+                </mat-form-field>
+            </td>
+            <td style="width:100px;">
+                <mat-form-field class="small-form-field">
+                    <mat-label>Strategische Ziele</mat-label>
+                    <input type="number" [(ngModel)]="entry.strategicTargets" matInput required>
+                </mat-form-field>
+            </td>
+            <td>
+                <a (click)='delete(entry)'>
+                    <fa-icon icon='trash'></fa-icon>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: right;">
+        <button style='margin-bottom: 40px;' mat-raised-button (click)="add()"><fa-icon icon="plus"></fa-icon></button>
+    </div>
+
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()" [disabled]="!formValid()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

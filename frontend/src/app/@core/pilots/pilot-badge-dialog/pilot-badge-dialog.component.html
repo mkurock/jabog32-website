@@ -1,0 +1,29 @@
+<div class="dialog-header">
+    Auszeichnungen
+</div>
+<div>
+    <h3>{{ item.user?.userName }}</h3>
+    <mat-form-field class="button-field">
+        <mat-label>Neue Auszeichnung verleihen</mat-label>
+        <mat-select [(ngModel)]="newBadge">
+            <mat-option *ngFor="let r of badges" [value]="r">
+            {{r.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="add()">+</button>
+    <h3>Auszeichnungen</h3>
+    <table style="margin: 20px 0; width: 100%">
+        <tr *ngFor="let b of item.badges">
+            <td width="35"><img src="{{b.imageUrl}}" width="40" /></td>
+            <td style="padding-left: 25px;">{{ b.name }}</td>
+            <td width="40">
+               <a (click)='remove(b.id)'><fa-icon icon='trash'></fa-icon></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="controls">
+    <button id="btn-save" mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

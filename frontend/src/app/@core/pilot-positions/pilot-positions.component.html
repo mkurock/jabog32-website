@@ -1,0 +1,116 @@
+<h1>Pilotenzuordnung</h1>
+<table class="jabog32 w90">
+    <ng-template ngFor [ngForOf]="squadrons" let-item>
+        <tr>
+            <td colspan="4">
+                <img src="{{item.patchUrl}}" width=50 />
+                <span style="font-size: 2.5em; margin-left: 50px;">{{item.name}}</span>
+            </td>
+        </tr>
+        <ng-template ngFor [ngForOf]="item.flights" let-f>
+            <tr>
+                <td colspan="4">
+                    <span style="font-size: 1.5em;">{{f.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="wing">
+                    <div class="ac-image" [style.backgroundImage]="f.leadWingPilot?.firstAircraft ? 'url(' + f.leadWingPilot?.firstAircraft?.iconUrl + ')' : ''"></div>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Wingman (Pilot)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'leadWingPilot')" [(ngModel)]="f.leadWingPilot">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.leadWingPilot" [value]='f.leadWingPilot'>{{f.leadWingPilot?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Wingman (RIO)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'leadWingRio')" [(ngModel)]="f.leadWingRio">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.leadWingRio" [value]='f.leadWingRio'>{{f.leadWingRio?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td class="leadp">
+                    <div class="ac-image" [style.backgroundImage]="f.leadPilot?.firstAircraft ? 'url(' + f.leadPilot?.firstAircraft?.iconUrl + ')' : ''"></div>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Lead (Pilot)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'leadPilot')" [(ngModel)]="f.leadPilot">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.leadPilot" [value]='f.leadPilot'>{{f.leadPilot?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Lead (RIO)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'leadRio')" [(ngModel)]="f.leadRio">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.leadRio" [value]='f.leadRio'>{{f.leadRio?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td class="seclead">
+                    <div class="ac-image" [style.backgroundImage]="f.secondElementLeadPilot?.firstAircraft ? 'url(' + f.secondElementLeadPilot?.firstAircraft?.iconUrl + ')' : ''"></div>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Second Element Lead (Pilot)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'secondElementLeadPilot')"
+                            [(ngModel)]="f.secondElementLeadPilot">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.secondElementLeadPilot" [value]='f.secondElementLeadPilot'>{{f.secondElementLeadPilot?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Second Element Lead (RIO)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'secondElementLeadRio')"
+                            [(ngModel)]="f.secondElementLeadRio">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.secondElementLeadRio" [value]='f.secondElementLeadRio'>{{f.secondElementLeadRio?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td class="secwing">
+                    <div class="ac-image" [style.backgroundImage]="f.secondElementWingPilot?.firstAircraft ? 'url(' + f.secondElementWingPilot?.firstAircraft?.iconUrl + ')' : ''"></div>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Second Element Wingman (Pilot)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'secondElementWingPilot')"
+                            [(ngModel)]="f.secondElementWingPilot">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.secondElementWingPilot" [value]='f.secondElementWingPilot'>{{f.secondElementWingPilot?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Second Element Wingman (RIO)</mat-label>
+                        <mat-select (selectionChange)="save(f, 'secondElementWingRio')"
+                            [(ngModel)]="f.secondElementWingRio">
+                            <mat-option [value]='null'>(Leer)</mat-option>
+                            <mat-option *ngIf="f.secondElementWingRio" [value]='f.secondElementWingRio'>{{f.secondElementWingRio?.user?.userName}}</mat-option>
+                            <mat-option *ngFor="let p of freePilots" [value]="p">
+                                {{p.user?.userName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </ng-template>
+    </ng-template>
+</table>

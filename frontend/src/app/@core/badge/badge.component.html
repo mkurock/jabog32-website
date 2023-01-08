@@ -1,0 +1,25 @@
+<h1>Auszeichnungen</h1>
+<div class="w90">
+    <button mat-raised-button (click)="addOrEdit()"><fa-icon icon="plus"></fa-icon><span style="margin-left: 10px"></span></button>
+    <br />
+    <br />
+</div>
+<table class="jabog32 w90">
+    <tr>
+        <th>Name</th>
+        <th>Zuletzt geändert am</th>
+        <th>Zuletzt geändert von</th>
+        <th>Erstellt von</th>
+        <th class='actions'></th>
+    </tr>
+    <tr *ngFor="let item of badge$ | async; let i = index">
+       <td>{{ item.name }}</td>
+       <td>{{ item.modifiedAt | date : 'dd.MM.yy HH:mm' }}</td>
+       <td>{{ item.modifiedBy?.userName }}</td>
+       <td>{{ item.createdBy?.userName }}</td>
+       <td class='actions'>
+           <a (click)='addOrEdit(item)'><fa-icon icon='edit'></fa-icon></a>
+           <a (click)='delete(item.id)'><fa-icon icon='trash'></fa-icon></a>
+       </td>
+    </tr>
+</table>

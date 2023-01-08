@@ -1,0 +1,215 @@
+// NAVIGATION
+:host {
+  margin-top: -88px;
+}
+::-webkit-scrollbar {
+  width: 1px;  /* Remove scrollbar space */
+  background: white;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+@media screen and (max-width: 1024px) {
+  :host {
+    margin-top: -45px;
+  }
+}
+
+.logo-text {
+font-family: 'Ubuntu', sans-serif;
+}
+
+.menu-button {
+  fa-icon {
+    font-size: 24px;
+  }
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+}
+
+.nav-group {
+  display: block;
+}
+
+.nav .nav-link {
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 7px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: currentColor;
+}
+
+.nav .nav-link .nav-link-title {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.nav .nav-link .nav-link-icon {
+  font-size: 20px;
+  height: 30px;
+  -webkit-font-smoothing: antialiased;
+  margin-left: 6px;
+  display: inline-block;
+  min-width: 25px;
+  text-align: center;
+  margin-right: 16px;
+}
+
+.navbar-header {
+  float: none;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 48px;
+  min-height: 48px;
+  padding: 0 16px 0 24px;
+  color: white;
+  background-color: black;
+  .logo {
+    .logo-text {
+      opacity: 1;
+      white-space: nowrap;
+      transition: opacity 200ms ease;
+      margin-left: 8px;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+    }
+  }
+  button {
+    background: black;
+    margin-top: 3px;
+    border: none;
+  }
+}
+.navbar-content {
+  background-color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
+  height: 100vh;
+  position: relative;
+}
+
+// SIDEBAR OPEN
+
+.sidebar.expanded {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  transition: all 0.2s ease;
+  .navbar-header {
+    button {
+      margin-left: -16px;
+    }
+  }
+}
+
+// SIDEBAR CLOSED
+.sidebar.collapsed {
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  transition: all 200ms ease-in;
+
+  > .navbar-header {
+    padding: 0 5px;
+
+    > .logo {
+      opacity: 0;
+      width: 0px;
+      transition: width 200ms ease;
+      transition: opacity 200ms ease;
+    }
+    button {
+    }
+  }
+}
+
+.sidebar.collapsed {
+  transition: all 200ms ease;
+  > .navbar-content {
+    // padding: 0 5px;
+
+    > .nav {
+      > .nav-group {
+        > .group-title > span {
+          opacity: 0;
+          transition: all 200ms ease;
+        }
+
+        > .group-title {
+          padding-left: 0;
+          justify-content: space-around;
+          transition: all 200ms ease;
+        }
+
+        > .group-title:before {
+          content: "";
+          display: block;
+          position: absolute;
+          min-width: 1.6rem;
+          border-top: 2px solid #ffcc00;
+          // opacity: 0.2;
+        }
+
+        > .group-items {
+          > .nav-link {
+            padding: 0.4rem;
+            transition: all 200ms ease;
+            > span {
+              opacity: 0;
+              transition: all 200ms ease;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.group-title {
+  align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  font-weight: 600;
+  padding-left: 10px;
+  margin-top: 8px;
+  font-size: 16px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  opacity: 1;
+
+  > span {
+    opacity: 1;
+    transition: opacity 200ms ease;
+  }
+}

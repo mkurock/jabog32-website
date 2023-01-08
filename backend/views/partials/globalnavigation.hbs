@@ -1,0 +1,51 @@
+<div class="navbar navbar-inverse">
+    <div class="container" style="width:1024px">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li{{#is page.name 'index'}} class="active" {{/is}}><a href="/">Home</a></li>
+                <li{{#is page.name 'news'}} class="active" {{/is}}><a href="/news">Neuigkeiten</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Geschwader <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/page/staff">Geschwaderstab</a></li>
+                        <li><a href="/pilots">Piloten</a></li>
+                        <li><a href="/page/ranks">Ränge</a></li>
+                        <li><a href="/page/regeln">Regeln</a></li>
+                        <li><a href="/squadron/statistics">Abschussstatistik</a></li>
+                        <li><a href="/squadron/deployments">Einsatzberichte</a></li>
+                        <li><a href="/page/Einsatzplan">Einsatzplan</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/page/Flugschule">Flugschule</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/page/server">Server</a></li>
+                    </ul>
+                </li>
+                <li{{#is page.name 'application'}} class="active" {{/is}}><a href="/home/application">Bewerbung</a></li>
+                <li><a href="/forum/index.php">Forum</a></li>
+                {{!-- <li{{#is page.name 'downloads'}} class="active" {{/is}}><a href="/page/downloads">Downloads</a></li> --}}
+                {{!-- <li{{#is page.name 'galerie'}} class="active" {{/is}}><a href="/">Bildergalerie</a></li> --}}
+                {{#isjabog user}}
+                    <li{{#is @root.page.name 'intern'}} class="active" {{/is}}><a href="/intern/">Intern</a></li>
+                {{/isjabog}}
+            </ul>
+            {{#if isAuthed}}
+                <ul class="nav navbar-nav navbar-right">
+                    <li{{#is page.name 'profile'}} class="active" {{/is}}><a href="/accounts/profile">{{ user.userName }}</a></li> 
+                    <li{{#is page.name 'logout'}} class="active" {{/is}}><a href="/accounts/logout">Logout</a></li> 
+                </ul>
+            {{else}}
+                <ul class="nav navbar-nav navbar-right">
+                    <li{{#is page.name 'login'}} class="active" {{/is}}><a href="/accounts/login">Login</a></li>
+                    <li{{#is page.name 'register'}} class="active" {{/is}}><a href="https://virtual-jabog32.de/forum/ucp.php?mode=register">Registrieren</a></li>
+                </ul>
+            {{/if}}
+        </div>
+    </div>
+</div>

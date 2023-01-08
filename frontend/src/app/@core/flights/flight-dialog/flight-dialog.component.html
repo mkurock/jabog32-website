@@ -1,0 +1,25 @@
+<div class="dialog-header">
+  Schwarm
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input type="text" [(ngModel)]="item.name" matInput placeholder="Text" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Callsign</mat-label>
+    <input type="text" [(ngModel)]="item.callsign" matInput placeholder="Text" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Staffel</mat-label>
+    <mat-select [(ngModel)]="item.squadron">
+      <mat-option *ngFor="let squad of squadrons" [value]="squad">
+        {{squad.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="controls">
+  <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+  <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

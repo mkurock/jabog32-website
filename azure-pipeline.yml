@@ -1,0 +1,173 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: build
+  jobs:
+  - job: build
+    steps:
+    - checkout: self
+    - script: ls -la
+    - task: Npm@1
+      displayName: "NPM Install Backend"
+      inputs:
+        command: 'install'
+        workingDir: 'backend'
+    - task: Npm@1
+      displayName: "Build Tailwind css"
+      inputs:
+        command: 'custom'
+        workingDir: 'backend'
+        customCommand: 'run build:tw'
+    - task: Npm@1
+      displayName: "NPM Build Backend"
+      inputs:
+        command: 'custom'
+        workingDir: 'backend'
+        customCommand: 'run build:prod'
+    - script: |
+        cp -r backend/node_modules artifact/dist/
+        cp -r backend/views artifact
+        cp -r backend/public artifact
+        cp backend/package.json artifact
+      displayName: Copy Backend Files
+    - task: Npm@1
+      displayName: "NPM Install Frontend"
+      inputs:
+        command: 'install'
+        workingDir: 'frontend'
+    - task: Npm@1
+      displayName: "NPM Build Frontend"
+      inputs:
+        command: 'custom'
+        workingDir: 'frontend'
+        customCommand: 'run build:prod'
+    - script: |
+        cd artifact
+        zip -r ../dist.zip *
+    - script: ls -la
+
+    - publish: dist.zip
+      artifact: dist
+
+- stage: TEST
+  jobs:
+  - deployment:
+    environment: TEST
+    variables:
+      - group: Website_TEST
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - download: current
+              artifact: dist
+            - script: |
+                cat >$(Pipeline.Workspace)/dist/.env <<EOL
+                DATABASE_HOST=$(DATABASE_HOST)
+                DATABASE_USER=$(DATABASE_USER)
+                DATABASE_PWD=$(DATABASE_PWD)
+                DATABASE_NAME=$(DATABASE_NAME)
+                DATABASE_NAME_FORUM=$(DATABASE_NAME_FORUM)
+                PORT=$(PORT)
+                FILESPATH=$(FILESPATH)
+                
+                
+                MAIL_HOST=mail.virtual-jabog32.de
+                MAIL_PORT=25
+                MAIL_SECURE=false
+                MAIL_USER=noreply@virtual-jabog32.de
+                MAIL_FROM_MAIL=noreply@virtual-jabog32.de
+                MAIL_REPLY_MAIL=stab@virtual-jabog32.de'
+                EOL
+              displayName: create .env File for Test
+
+            - script: ls $(Pipeline.Workspace) -la
+            - task: CopyFilesOverSSH@0
+              inputs:
+                sshEndpoint: 'Jabog32-host'
+                sourceFolder: '$(Pipeline.Workspace)'
+                contents: 'dist/*'
+                targetFolder: '/home/jabog32'
+                readyTimeout: '20000'
+            - task: SSH@0
+              inputs:
+                sshEndpoint: 'Jabog32-host'
+                runOptions: 'inline'
+                inline: |
+                  cd /home/jabog32/dist
+                  unzip dist.zip
+                  rm dist.zip
+                  
+                  pm2 stop website-test
+
+                  rm -rf ../website-test/*
+                  shopt -s dotglob
+                  mv * ../website-test
+                  cd ../website-test/
+                  pm2 start website-test
+                readyTimeout: '20000'
+- stage: PROD
+  jobs:
+  - deployment:
+    environment: PROD
+    variables:
+      - group: Website_PROD
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - download: current
+              artifact: dist
+            - script: |
+                cat >$(Pipeline.Workspace)/dist/.env <<EOL
+                DATABASE_HOST=$(DATABASE_HOST)
+                DATABASE_USER=$(DATABASE_USER)
+                DATABASE_PWD=$(DATABASE_PWD)
+                DATABASE_NAME=$(DATABASE_NAME)
+                DATABASE_NAME_FORUM=$(DATABASE_NAME_FORUM)
+                PORT=$(PORT)
+                FILESPATH=$(FILESPATH)
+                
+                
+                MAIL_HOST=mail.virtual-jabog32.de
+                MAIL_PORT=25
+                MAIL_SECURE=false
+                MAIL_USER=noreply@virtual-jabog32.de
+                MAIL_FROM_MAIL=noreply@virtual-jabog32.de
+                MAIL_REPLY_MAIL=stab@virtual-jabog32.de'
+                EOL
+              displayName: create .env File for Test
+
+            - script: ls $(Pipeline.Workspace) -la
+            - task: CopyFilesOverSSH@0
+              inputs:
+                sshEndpoint: 'Jabog32-host'
+                sourceFolder: '$(Pipeline.Workspace)'
+                contents: 'dist/*'
+                targetFolder: '/home/jabog32'
+                readyTimeout: '20000'
+            - task: SSH@0
+              inputs:
+                sshEndpoint: 'Jabog32-host'
+                runOptions: 'inline'
+                inline: |
+                  cd /home/jabog32/dist
+                  unzip dist.zip
+                  rm dist.zip
+                  
+                  pm2 stop website
+
+                  rm -rf ../website/*
+                  shopt -s dotglob
+                  mv * ../website
+                  cd ../website/
+                  pm2 start website
+                readyTimeout: '20000'
+          

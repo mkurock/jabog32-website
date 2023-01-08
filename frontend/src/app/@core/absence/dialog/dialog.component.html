@@ -1,0 +1,36 @@
+<div class="dialog-header">
+    Abmelden
+</div>
+<div>
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Abwesenheitszeitraum</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input [(ngModel)]="begin" matStartDate placeholder="Anfang">
+          <input [(ngModel)]="end" matEndDate placeholder="Ende">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      
+    </mat-form-field>
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>Abwesend von</mat-label>
+        <input [(ngModel)]="begin" matInput [matDatepicker]="from">
+        <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+        <mat-datepicker #from></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Abwesend bis</mat-label>
+        <input [(ngModel)]="end" matInput [matDatepicker]="till">
+        <mat-datepicker-toggle matSuffix [for]="till"></mat-datepicker-toggle>
+        <mat-datepicker #till></mat-datepicker>
+    </mat-form-field> -->
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Kommentar</mat-label>
+        <textarea rows="5" [(ngModel)]="comment" matInput placeholder="Kommentar"></textarea>
+    </mat-form-field>
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()" [disabled]="!formValid()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

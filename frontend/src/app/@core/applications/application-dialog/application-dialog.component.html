@@ -1,0 +1,143 @@
+<div class="dialog-header">
+    Bewerbung
+</div>
+<div class="content-cont">
+    <table style="width: 100%;">
+        <tr>
+            <td colspan="2">
+                <h3>Persönliche Daten</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{item.firstName}} {{item.lastName}}</td>
+        </tr>
+        <tr>
+            <td>Callsign</td>
+            <td>{{item.callsign}}</td>
+        </tr>
+        <tr>
+            <td>Geburtsjahr</td>
+            <td>{{item.birthYear}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{item.email}}</td>
+        </tr>
+        <tr>
+            <td>Wohnort</td>
+            <td>{{item.location}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3>Hard- und Software</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>Betriebssystem</td>
+            <td>{{item.os}}</td>
+        </tr>
+        <tr>
+            <td>Internetverbindung</td>
+            <td>{{item.internetConnection}}</td>
+        </tr>
+        <tr>
+            <td>CPU</td>
+            <td>{{item.cpu}}</td>
+        </tr>
+        <tr>
+            <td>RAM</td>
+            <td>{{item.ram}}</td>
+        </tr>
+        <tr>
+            <td>Grafikkarte</td>
+            <td>{{item.graphicsCard}}</td>
+        </tr>
+        <tr>
+            <td>Joystick</td>
+            <td>{{item.joystick}}</td>
+        </tr>
+        <tr>
+            <td>Sonstige Peripheriegeräte</td>
+            <td>{{item.additionalPeripharal}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3>Zusätzliche Angaben</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>Bevorzugtes Flugmuster</td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Erstmuster</mat-label>
+                    <mat-select [(ngModel)]="item.aircraft">
+                        <mat-option *ngFor="let r of aircrafts" [value]="r">
+                        {{r.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>Erfahrung in DCS</td>
+            <td>{{item.experienceDCS}}</td>
+        </tr>
+        <tr>
+            <td>Erfahrung Flugsimulation</td>
+            <td>{{item.experienceSim}}</td>
+        </tr>
+        <tr>
+            <td>Berufliche Fliegerei</td>
+            <td>{{item.commercialAviation ? 'Ja': 'Nein'}}</td>
+        </tr>
+        <tr>
+            <td>Zusatzinfo</td>
+            <td>{{ item.additionalInfo }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3>Bearbeitung</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Status</mat-label>
+                    <mat-select [(ngModel)]="item.status">
+                        <mat-option *ngFor="let s of status" [value]="s">
+                            {{s}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4>Kommentare</h4>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div *ngFor="let c of item.comments" class="comment">
+                    <div>{{c.text}}</div>
+                    <div class="comment-footer">{{c.createdAt | date : 'dd.MM HH:mm' }} von {{c.createdBy?.userName}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Kommentar</mat-label>
+                    <textarea rows="5" [(ngModel)]="newComment" matInput placeholder="Kommentar"></textarea>
+                </mat-form-field>
+                <button style='float: right; margin-bottom: 40px;' mat-raised-button (click)="addComment()">Kommentar hinzufügen</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

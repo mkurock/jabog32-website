@@ -1,0 +1,38 @@
+<h1>Einsatzberichte</h1>
+<div class="w90">
+    <button mat-raised-button (click)="edit()"><fa-icon icon="plus"></fa-icon></button>
+    <mat-form-field style="margin: 0 15px 0 50px">
+        <mat-label>Filterzeitraum</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input [(ngModel)]="filter.start" (dateChange)="onFilter()" matStartDate placeholder="Anfang">
+          <input  [(ngModel)]="filter.end" (dateChange)="onFilter()" matEndDate placeholder="Ende">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <button mat-raised-button (click)="clearFilter()">clear filter</button>
+    <br />
+    <br />
+</div>
+<table class="jabog32 w90">
+    <tr>
+        <th width=50>#</th>
+        <th>Titel</th>
+        <th>Einsatzdatum</th>
+        <th>Piloten</th>
+        <th class='actions'></th>
+    </tr>
+    <tr *ngFor="let item of logbook$ | async; let i = index">
+       <td>{{ item.id }}</td>
+       <td>{{ item.title }}</td>
+       <td>{{ item.departure | date: 'dd.MM.yyyy'}}</td>
+      <td>
+        <ul style="list-style: none;">
+          <li *ngFor="let d of item.logbookDetails">{{ d.pilot?.user?.userName }}</li>
+        </ul>
+      </td>
+       <td class='actions'>
+           <a><fa-icon icon='edit' (click)="edit(item)"></fa-icon></a>
+       </td>
+    </tr>
+</table>

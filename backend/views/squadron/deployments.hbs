@@ -1,0 +1,26 @@
+<div class="relative bg-white md:w-4/5 mx-4 md:m-auto p-6">
+  <h2>Einsätze</h2>
+
+  <table class="w-full table table-striped">
+    <tr>
+      <th class="text-left">Nr</th>
+      <th class="text-left">Einsatzort</th>
+      <th class="text-left">Einsatzart</th>
+      <th class="text-left">Start</th>
+      <th class="text-left">Landung</th>
+      <th class="text-right">Flugzeit</th>
+      <th class="whitespace-nowrap">Anzahl Piloten</th>
+    </tr>
+    {{#each data.deployments}}
+    <tr style="border-bottom: 1px solid #eee;">
+      <td class="pr-4"><a href="/squadron/deployments/{{ id }}">#{{id}}</a></td>
+      <td>{{ location }}</td>
+      <td>{{ type }}</td>
+      <td class="whitespace-nowrap pr-4">{{date departure }}</td>
+      <td class="whitespace-nowrap pr-4">{{date landing }}</td>
+      <td class="text-right">{{ flightTime }}</td>
+      <td class="text-right">{{ logbookDetails.length }}</td>
+    </tr>
+    {{/each}}
+  </table>
+</div>

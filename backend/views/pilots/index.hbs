@@ -1,0 +1,169 @@
+<div class="mt-16 lg:mt-0 squad-container-view">
+  <style>
+    .jabog-image-slider {
+      display: none;
+    }
+
+    #logo {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 48px;
+      margin: 0;
+      width: auto;
+      min-width: unset;
+    }
+  </style>
+  {{#each data.squadrons }}
+  <div class="bg-white mx-4 lg:mx-8 py-4">
+    <h1 class="text-center">
+      {{ number }}. Staffel: {{ name }}
+      <img class="squadron-patch inline-block" src="{{ patchUrl }}" />
+    </h1>
+    {{#each flights }}
+    <h3 class="text-center"> {{ name }}</h3>
+    <h5 class="text-center">Rufzeichen: {{ callsign }}</h5>
+    <div class="flight-container">
+
+      {{#if leadWingPilot}}
+      <div style="display: inline-block;">
+        <div id="wing-{{id}}" class="aircraft"
+          style="background-image: url('{{ leadWingPilot.firstAircraft.iconUrl}}')">
+        </div>
+        <a href="/pilots/detail/{{leadWingPilot.id}}">
+          <div id="pilot-{{leadWingPilot.id}}" class="pilot">Pilot: {{ leadWingPilot.user.userName }} ({{
+            leadWingPilot.rank.name}})</div>
+        </a>
+        {{#if leadWingRio }}
+        <a href="/pilots/detail/{{leadWingRio.id}}">
+          <div id="pilot-{{leadWingRio.id}}" class="pilot">RIO: {{ leadWingRio.user.userName }} ({{
+            leadWingRio.rank.name}})</div>
+        </a>
+        {{else}}
+        <div class="pilot">&nbsp;</div>
+        {{/if}}
+      </div>
+      {{else}}
+      <div id="wing-{{id}}" class="aircraft" style="display: none"></div>
+      {{/if }}
+
+      {{#if leadPilot}}
+      <div style="display: inline-block;">
+        <div id="lead-{{id}}" class="aircraft" style="background-image: url('{{ leadPilot.firstAircraft.iconUrl}}')">
+        </div>
+        <a href="/pilots/detail/{{leadPilot.id}}">
+          <div id="pilot-{{leadPilot.id}}" class="pilot">Pilot: {{ leadPilot.user.userName }} ({{ leadPilot.rank.name}})
+          </div>
+        </a>
+        {{#if leadRio }}
+        <a href="/pilots/detail/{{leadRio.id}}">
+          <div id="pilot-{{leadRio.id}}" class="pilot">RIO: {{ leadRio.user.userName }} ({{ leadRio.rank.name}})</div>
+        </a>
+        {{else}}
+        <div class="pilot">&nbsp;</div>
+        {{/if}}
+      </div>
+      {{else}}
+      <div id="lead-{{id}}" class="aircraft" style="display: none"></div>
+      {{/if }}
+
+      {{#if secondElementLeadPilot}}
+      <div style="display: inline-block;">
+        <div id="secondlead-{{id}}" class="aircraft"
+          style="background-image: url('{{ secondElementLeadPilot.firstAircraft.iconUrl}}')">
+        </div>
+        <a href="/pilots/detail/{{secondElementLeadPilot.id}}">
+          <div id="pilot-{{secondElementLeadPilot.id}}" class="pilot">Pilot: {{ secondElementLeadPilot.user.userName }}
+            ({{ secondElementLeadPilot.rank.name}})</div>
+        </a>
+        {{#if secondElementLeadRio }}
+        <a href="/pilots/detail/{{secondElementLeadRio.id}}">
+          <div id="pilot-{{secondElementLeadRio.id}}" class="pilot">RIO: {{ secondElementLeadRio.user.userName }} ({{
+            secondElementLeadRio.rank.name}})</div>
+        </a>
+        {{else}}
+        <div class="pilot">&nbsp;</div>
+        {{/if}}
+      </div>
+      {{else}}
+      <div id="secondlead-{{id}}" class="aircraft" style="display: none"></div>
+      {{/if }}
+
+
+
+
+      {{#if secondElementWingPilot}}
+      <div style="display: inline-block;">
+        <div id="secondwing-{{id}}" class="aircraft"
+          style="background-image: url('{{ secondElementWingPilot.firstAircraft.iconUrl}}')">
+        </div>
+        <a href="/pilots/detail/{{secondElementWingPilot.id}}">
+          <div id="pilot-{{secondElementWingPilot.id}}" class="pilot">Pilot: {{ secondElementWingPilot.user.userName }}
+            ({{ secondElementWingPilot.rank.name}})</div>
+        </a>
+        {{#if secondElementWingRio }}
+        <a href="/pilots/detail/{{secondElementWingRio.id}}">
+          <div id="pilot-{{secondElementWingRio.id}}" class="pilot">RIO: {{ secondElementWingRio.user.userName }} ({{
+            secondElementWingRio.rank.name}})</div>
+        </a>
+        {{else}}
+        <div class="pilot">&nbsp;</div>
+        {{/if}}
+      </div>
+      {{else}}
+      <div id="secondwing-{{id}}" class="aircraft" style="display: none"></div>
+      {{/if }}
+
+      <div style="position: relative"></div>
+    </div>
+    {{/each}}
+  </div>
+  {{/each}}
+  <div class="bg-white mx-4 lg:mx-8 mt-4 p-4">
+    <h1 class="text-center">324th Staffel: Edelweiß <img class="squadron-patch inline-block"
+        src="/files/squadrons/324th-Edelweiss-final-Website.png"> </h1>
+    <div id="squadron-table">
+      <h4 class="text-center">1. Schwarm Ausbildung</h4>
+      <p class="text-center">Rufzeichen Edelweiß</p>
+      <table class="w-full mb-4">
+        <tr>
+          <th class="text-left">Pilot</th>
+          <th class="text-left">Muster</th>
+          <th class="text-left">Rang</th>
+        </tr>
+        {{#each data.edelweiss}}
+        <tr class="border-slate-200 border-b">
+          <td><a href="/pilots/detail/{{id}}">{{ user.userName }}</a></td>
+          <td>
+            {{ firstAircraft.name }}
+          </td>
+          <td>
+            {{ rank.name }}
+          </td>
+        </tr>
+        {{/each}}
+      </table>
+      <h4 class="text-center">2. Schwarm Reserve</h4>
+      <p class="text-center">Rufzeichen Holiday</p>
+      <table class="w-full">
+        <tr>
+          <th class="text-left">Pilot</th>
+          <th class="text-left">Muster</th>
+          <th class="text-left">Rang</th>
+        </tr>
+        {{#each data.reserve}}
+        <tr class="border-slate-200 border-b">
+          <td><a href="/pilots/detail/{{id}}">{{ user.userName }}</a></td>
+          <td>
+            {{ firstAircraft.name }}
+          </td>
+          <td>
+            {{ rank.name }}
+          </td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+  </h1>
+</div>

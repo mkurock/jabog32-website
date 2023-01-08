@@ -1,0 +1,13 @@
+<div class="dialog-header">
+    NOTAM
+</div>
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-label>NOTAM</mat-label>
+        <textarea rows="5" [(ngModel)]="notam.text" matInput placeholder="Text"></textarea>
+    </mat-form-field>
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()" [disabled]="!formValid()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

@@ -1,0 +1,52 @@
+<div class="tw-container">
+  <h2>Log in.</h2>
+  <div class="mt-4">
+    <section id="loginForm">
+      <form action="/accounts/login" class="form-horizontal" method="post" role="form" novalidate="novalidate"><input
+          name="__RequestVerificationToken" type="hidden"
+          value="-xG5pWQGlQ7jXvCsH8SDYqpayZMErXaUlJ-ebJzzyoIVWXzAJZCQTPda0BtRbG2jDDS2DN0jvVJQFR1g9jkokhqzh89k59DqxitlVTw5EKs1">
+        <div style='border-left: 3px solid darkred;border-right: 3px solid darkred; padding: 0 15px;'>
+          <h2>Wichtiger Hinweis</h2>
+          Für die Homepage wird der Forumslogin verwendet. Um sich auf der Homepage anmelden zu können musst Du dich im
+          Forum registrieren.
+          <a href="https://virtual-jabog32.de/forum/ucp.php?mode=register">Registrierung im Forum</a>
+        </div>
+        <div class="mt-8">
+          <label class="col-md-2 control-label" for="UserName">Benutzername</label>
+          <div class="col-md-10">
+            <input class="form-control" data-val="true" data-val-required="The Benutzername field is required."
+              id="username" name="username" type="text" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="UserName"
+              data-valmsg-replace="true"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="Password">Password</label>
+          <div class="col-md-10">
+            <input class="form-control" data-val="true" data-val-required="The Password field is required."
+              id="password" name="password" type="password">
+            <span class="field-validation-valid text-danger" data-valmsg-for="Password"
+              data-valmsg-replace="true"></span>
+          </div>
+        </div>
+        {{!-- <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <div class="checkbox">
+              <input data-val="true" data-val-required="The Remember me? field is required." id="RememberMe"
+                name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
+              <label for="RememberMe">Remember me?</label>
+            </div>
+          </div>
+        </div> --}}
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Log in" class="p-4 bg-green-700 text-white rounded-md mt-4 cursor-pointer">
+          </input>
+        </div>
+        {{#if data.loginFailed}}
+        <h1>Username and/or password incorrect!</h1>
+        {{/if}}
+      </form>
+    </section>
+  </div>
+</div>

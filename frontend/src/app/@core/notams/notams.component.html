@@ -1,0 +1,25 @@
+<h1>NOTAMs</h1>
+<div class="w90">
+    <button mat-raised-button (click)="add()" *ngIf="currentUser.hasRole('NOTAMs')"><fa-icon icon="plus"></fa-icon><span style="margin-left: 10px">NOTAM</span></button>
+    <br />
+    <br />
+</div>
+<table class="jabog32 w90">
+    <tr>
+        <th width=1></th>
+        <th>Text</th>
+        <th width="200">Datum</th>
+        <th width="80">#</th>
+        <th class="actions"></th>
+    </tr>
+    <tr *ngFor="let item of data | async; let i = index">
+       <td>{{ i+1 }}</td>
+       <td>{{ item.text }}</td>
+       <td>{{ item.createdAt | date : 'dd.MM.yy HH:mm' }}</td>
+       <td>{{ item.notamAcks?.length }}</td>
+       <td class="actions">
+           <a (click)="acknowledge(item.id)" *ngIf="!hasAcknowledged(item)"><fa-icon icon="check"></fa-icon></a>
+           <a (click)='delete(item.id)' *ngIf="currentUser.hasRole('NOTAMs')"><fa-icon icon='trash'></fa-icon></a>
+       </td>
+    </tr>
+</table>

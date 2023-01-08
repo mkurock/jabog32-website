@@ -1,0 +1,13 @@
+<div class="dialog-header">
+    Neuer Ordner
+</div>
+<div class="content-cont">
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input [(ngModel)]="item" matInput placeholder="Name" required />
+    </mat-form-field>
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

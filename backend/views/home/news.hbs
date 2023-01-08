@@ -1,0 +1,25 @@
+<div class="multi-row">
+  <div>
+    {{#each data.news}}
+    <div class="bg-white mb-4 mx-4">
+      <div class="md:flex">
+        {{#if imageUrl}}
+        {{#if cover }}
+        <div class="w-full flex-1 md:max-w-xs md:min-w-[300px] h-80 md:h-auto bg-center bg-cover bg-no-repeat bg-gray-50" style="background-image: url('{{imageUrl}}'); background-size: cover"></div>
+        {{else}}
+        <div class="w-full flex-1 md:max-w-xs md:min-w-[300px] h-80 md:h-auto bg-center bg-contain bg-no-repeat bg-gray-50" style="background-image: url('{{imageUrl}}'); background-size: contain"></div>
+        {{/if}}
+        {{else}}
+        <div class="w-full flex-1 md:max-w-xs md:min-w-[300px] h-80 md:h-auto bg-center bg-contain bg-no-repeat bg-gray-50" style="background-image: url('/assets/images/vJaBoG32-Logo.png');"></div>
+        {{/if}}
+        <div class="p-4 text md:flex-[2]">
+          <h4 class="text-xl">{{subject}}</h4>
+          <span class="text-sm block mb-3">von {{ createdBy.userName}} am {{date createdAt
+              }} Uhr</span></h3>
+            {{{body}}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

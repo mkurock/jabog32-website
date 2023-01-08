@@ -1,0 +1,46 @@
+<div class="dialog-header">
+  Pilot
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <input type="text" [disabled]='userDisabled' placeholder="User" matInput (keyup)="filterUser($event)" [(ngModel)]="item.user"
+      [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let u of filteredUsers" [value]="u">
+        {{u.userName}} ({{ u.email }})
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Rang</mat-label>
+    <mat-select [(ngModel)]="item.rank">
+      <mat-option *ngFor="let r of ranks" [value]="r">
+        {{r.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Erstmuster</mat-label>
+    <mat-select [(ngModel)]="item.firstAircraft">
+      <mat-option *ngFor="let r of aircrafts" [value]="r">
+        {{r.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Zweitmuster</mat-label>
+    <mat-select [(ngModel)]="item.secondAircraft">
+      <mat-option [value]='null'>(Leer)</mat-option>
+      <mat-option *ngFor="let r of aircrafts" [value]="r">
+        {{r.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox [(ngModel)]="item.reserve">
+    Reserve?
+  </mat-checkbox>
+</div>
+<div class="controls">
+  <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+  <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

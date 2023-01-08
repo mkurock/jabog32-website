@@ -1,0 +1,74 @@
+<div class="relative tw-container">
+  <h2 class="mb-4">Pilot : {{ data.pilot.user.userName }}</h2>
+  <div>
+    <img class="hidden md:block absolute top-6 right-6" src="{{ data.pilot.rank.iconUrl }}" width="80" />
+    <img class="hidden md:block absolute top-6 right-28" src="{{ data.squadron.patchUrl }}" width="80" />
+  </div>
+  <table class="w-full">
+    <tr>
+      <td class="py-2 w-64">Staffel</td>
+      <td class="py-2">{{ data.squadron.name }}</td>
+    </tr>
+    <tr>
+      <td class="py-2">Rang</td>
+      <td class="py-2">{{data.pilot.rank.name}}</td>
+    </tr>
+    <tr>
+      <td class="py-2">Erstmuster</td>
+      <td class="py-2">{{data.pilot.firstAircraft.name}}</td>
+    </tr>
+    <tr>
+      <td class="py-2">Zweitmuster</td>
+      <td class="py-2">{{data.pilot.secondAircraft.name}}</td>
+    </tr>
+    <tr>
+      <td class="py-2">Flugstunden</td>
+      <td class="py-2">{{ data.pilot.flightHoursTotal }}</td>
+    </tr>
+    <tr>
+      <td class="py-2">Flugzeuge zerstört</td>
+      <td class="py-2">{{ data.pilot.airTargetsTotal }}</td>
+    </tr>
+    <tr>
+      <td class="py-2">Bodenziele zerstört</td>
+      <td class="py-2">{{ data.pilot.groundTargetsTotal }}</td>
+    </tr>
+    <tr>
+      <td class="py-2">Strategische Ziele zerstört</td>
+      <td class="py-2">{{ data.pilot.strategicTargetsTotal }}</td>
+    </tr>
+  </table>
+
+  <h3 class="font-bold text-lg py-4">Auszeichnungen</h3>
+  {{#each data.pilot.badges}}
+  <img class="inline" width="100" src="{{imageUrl}}" alt="{{name}}" />
+  {{/each}}
+
+  <h3 class="font-bold text-lg py-4">Letzten Einsätze</h3>
+  <table class="with-borders w-full table-striped">
+    <tr>
+      <th class="text-left">Nr</th>
+      <th class="text-left">Einsatzort</th>
+      <th class="text-left">Einsatzart</th>
+      <th class="text-left hidden md:table-cell">Start</th>
+      <th class="text-left hidden md:table-cell">Landung</th>
+      <th class="hidden md:table-cell text-right">Flugzeit</th>
+      <th class="hidden md:table-cell text-right">Luftziele</th>
+      <th class="hidden md:table-cell text-right">Bodenziele</th>
+      <th class="hidden md:table-cell text-right">Strategische Ziele</th>
+    </tr>
+    {{#each data.deployments}}
+    <tr>
+      <td><a href="/squadron/deployments/{{ logbook.id }}">#{{logbook.id}}</a></td>
+      <td>{{ logbook.location }}</td>
+      <td>{{ logbook.type }}</td>
+      <td class="hidden md:table-cell">{{date logbook.departure }}</td>
+      <td class="hidden md:table-cell">{{date logbook.landing }}</td>
+      <td class="text-right hidden md:table-cell">{{ logbook.flightTime }}</td>
+      <td class="text-right hidden md:table-cell">{{ airTargets }}</td>
+      <td class="text-right hidden md:table-cell">{{ groundTargets }}</td>
+      <td class="text-right hidden md:table-cell">{{ strategicTargets }}</td>
+    </tr>
+    {{/each}}
+  </table>
+</div>

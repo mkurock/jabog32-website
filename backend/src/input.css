@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+  }
+  body {
+    min-height: calc(100vh - 40px);
+    position: relative;
+  }
+  a {
+    @apply text-blue-800;
+  }
+  a:hover {
+    @apply text-blue-600;
+  }
+  .navbar > ul > li > a {
+    @apply px-3 py-3 block text-black;
+  }
+  .navbar li > a {
+    @apply px-3 py-1 block text-black;
+  }
+  .navbar ul {
+    @apply list-none pl-0;
+  }
+  .navbar li > a:hover {
+    @apply bg-amber-200;
+  }
+  .nav-divider {
+    @apply h-[1px] bg-slate-200 mx-[5px];
+  }
+  .nav-open > ul {
+    display: block !important;
+  }
+  h3.jb-header {
+    @apply text-2xl mb-2;
+  }
+  h4.jb-header {
+    @apply text-lg font-bold;
+  }
+  ul {
+    @apply list-disc pl-5;
+  }
+  .tw-container {
+    @apply bg-white mx-4 lg:mx-8 p-4;
+  }
+  .icon-bar {
+    @apply block bg-gray-500 h-[2px] w-full my-1.5;
+  }
+  @media screen and (max-width: 1024px) {
+    .navbar {
+      @apply fixed top-10 z-50 w-full;
+    }
+    .navbar ul.flex-row {
+      flex-direction: column;
+    }
+    .navbar li > a {
+      @apply px-3 py-3 block text-black;
+    }
+  }
+
+  input[type='text'].form-control,
+  input[type='email'].form-control,
+  input[type='number'].form-control,
+  input[type='password'].form-control,
+  select.form-control {
+    @apply bg-white border-slate-300 border rounded-md w-full max-w-[280px] p-1;
+  }
+  textarea.form-control {
+    @apply bg-white border-slate-300 border rounded-md w-full p-1;
+  }
+  input.form-control:focus {
+    @apply border-amber-500 shadow-amber-500;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%),
+      0 0 8px rgb(102 175 233 / 60%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px #f59e0b;
+    outline: none;
+  }
+  .center-header {
+    @apply relative block w-60 mx-auto;
+  }
+  .center-header::after {
+    @apply bg-black absolute right-[100%] w-24 h-[3px] top-[50%] mr-3;
+    content: '';
+  }
+  .center-header::before {
+    @apply bg-black absolute left-[100%] w-24 h-[3px] top-[50%] ml-3;
+    content: '';
+  }
+  .home-container [class^='item-'] {
+    flex: 1;
+    background-color: white;
+  }
+  .home-container .item-2 {
+    flex-basis: calc(50% - 50px);
+  }
+  .home-container .item-3 {
+    flex-basis: calc(75% - 50px);
+  }
+  .home-container .item-4 {
+    flex-basis: calc(100% - 50px);
+  }
+  .home-container .item-1 {
+    flex-basis: calc(25% - 50px);
+  }
+  @media screen and (max-width: 1400px) {
+    .home-container .item-3 {
+      flex-basis: calc(100% - 50px);
+    }
+    .home-container .item-1 {
+      flex-basis: calc(50% - 50px);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .home-container .item-3 {
+      flex-basis: calc(100% - 50px);
+    }
+    .home-container .item-1 {
+      flex-basis: calc(100% - 50px);
+    }
+    .news-preview {
+      flex-direction: column !important;
+    }
+  }
+  p {
+    @apply mb-2;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Orbitron', sans-serif;
+    @apply font-medium tracking-[1px];
+  }
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+
+  /* Slider */
+  .jabog-image-slider > div {
+    @apply absolute top-0 bottom-0 right-0 left-0 bg-center bg-cover hidden;
+  }
+  .jabog-image-slider > div:nth-child(1) {
+    @apply block;
+  }
+  .jabog-image-slider > div > div {
+    @apply absolute bottom-0 left-0 right-0 h-16 text-white text-base md:text-2xl;
+    @apply text-center pt-3 leading-[14px];
+    font-family: 'Saira', sans-serif;
+    background: -moz-linear-gradient(
+      left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6) 35%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.6) 65%,
+      rgba(0, 0, 0, 0) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6) 35%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.6) 65%,
+      rgba(0, 0, 0, 0) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6) 35%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.7) 65%,
+      rgba(0, 0, 0, 0) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+  }
+  .jabog-image-slider > div > div strong {
+    @apply tracking-[1px];
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+  }
+  .squad-container-view .aircraft {
+    @apply w-80 min-w-[160px] h-80 inline-block relative bg-contain bg-center bg-no-repeat;
+    background-image: url(/assets/images/ac-placeholder.png);
+  }
+  .squad-container-view .pilot {
+    @apply text-center;
+  }
+  .flight-container {
+    @apply text-center;
+  }
+  div[id^='lead'].aircraft {
+    @apply mb-24;
+  }
+  div[id^='wing-'].aircraft,
+  div[id^='secondlead-'].aircraft {
+    @apply mb-12;
+  }
+  .statistics-body td {
+    @apply py-2;
+  }
+  .statistics-body tr:nth-child(1),
+  .statistics-body tr:nth-child(2),
+  .statistics-body tr:nth-child(3) {
+    @apply h-10 font-medium;
+  }
+  .statistics-body tr:nth-child(3) td {
+    @apply border-b border-gray-200;
+  }
+}

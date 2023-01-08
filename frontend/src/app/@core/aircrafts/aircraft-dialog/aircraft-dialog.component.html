@@ -1,0 +1,23 @@
+<div class="dialog-header">
+    Luftfahrzeug
+</div>
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input type="text" [(ngModel)]="item.name" matInput placeholder="Text" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>icon Url</mat-label>
+        <input type="text" [(ngModel)]="item.iconUrl" matInput placeholder="Text" />
+    </mat-form-field>
+    <div class="preview" [style.backgroundImage]="'url(' + item.iconUrl + ')'">
+        Vorschau
+    </div>
+    <mat-checkbox [(ngModel)]="item.availableForApplications">
+        Verfügbar für Bewerbungen?
+    </mat-checkbox>
+</div>
+<div class="controls">
+    <button mat-raised-button color="primary" (click)="ok()">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</div>

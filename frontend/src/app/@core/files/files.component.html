@@ -1,0 +1,40 @@
+<h1>Dateien</h1>
+<div class="w90">
+    <button mat-raised-button *ngIf="currentUser.hasRole('Dateibrowser - schreiben')" (click)="upload()"><fa-icon icon="upload"></fa-icon></button>
+    <button mat-raised-button *ngIf="currentUser.hasRole('Dateibrowser - schreiben')" (click)="newFolder()"><fa-icon icon="plus"></fa-icon> Ordner</button>
+    <br />
+    <br />
+</div>
+<div class="w90">
+    <span *ngFor="let b of breadcrumb; let i = index">
+        <span *ngIf="i == breadcrumb.length-1">{{b.name}}</span>
+        <a *ngIf="i < breadcrumb.length-1" (click)="navigateToPath(b.path)">{{b.name}}</a>
+        <span *ngIf="i < breadcrumb.length-1" class="slash">/</span>
+    </span>
+</div>
+<table class="w90 jabog32 table-border-invis" 
+    appDnd 
+    [disabled]="!currentUser.hasRole('Dateibrowser - schreiben')"
+    (onFilesDropped)="uploadFiles($event)" 
+    cellspacing=0 cellpadding=0>
+    <tr>
+        <th width="50"></th>
+        <th>Datei</th>
+        <th class='actions'></th>
+    </tr>
+    <tr *ngIf="path != ''">
+        <td colspan="3">
+            <a (click)="navigateToPath()"><fa-icon style="margin-right: 33px;" icon="arrow-up"></fa-icon> ...</a>
+        </td>
+    </tr>
+    <tr *ngFor="let item of currentFolder; let i = index">
+       <td><fa-icon [icon]="getFileIcon(item)"></fa-icon></td>
+       <td>
+           <a *ngIf="item.type == 'folder'" (click)="navigate(item)">{{ item.name }}</a>
+           <a *ngIf="item.type == 'file'" href="{{item.path}}" target="_BLANK">{{ item.name }}</a>
+        </td>
+       <td class='actions'>
+           <a *ngIf="currentUser.hasRole('Dateibrowser - schreiben')" [class]="deletable(item) ? '' : 'disabled'" title="{{deletable(item) ? '' : 'Ordner nicht leer'}}" (click)='delete(item)'><fa-icon icon='trash'></fa-icon></a>
+       </td>
+    </tr>
+</table>

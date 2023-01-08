@@ -1,0 +1,58 @@
+<div class="sidebar" [ngClass]="{ expanded: shouldShow, collapsed: !shouldShow }">
+    <!-- Navbar -->
+    <div class="navbar-header">
+      <div class="logo">
+        <!-- <img class="logo-icon" src="assets/images/logos/fuse.svg"> -->
+        <span style="cursor: pointer" class="logo-text"></span>
+      </div>
+  
+      <button
+        class="menu-button"
+        type="button"
+        mat-icon-button
+        (click)="shouldShow = !shouldShow"
+        fxHide.lt-lg
+      >
+        <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+      </button>
+    </div>
+  
+    <!-- / Navbar -->
+  
+    <div class="navbar-content">
+      <div class="nav">
+        <!-- Vertical Navigation Layout == <fuse-navigation> -->
+  
+        <ng-container *ngFor="let item of navigation | async">
+          <div class="nav-group">
+            <ng-container>
+              <ng-template #itemContent>
+                <ng-container>
+                  <div class="group-title">
+                    <span>{{ item.title }}</span>
+                  </div>
+  
+                  <div class="group-items">
+                    <ng-container *ngFor="let children of item.children">
+                      <!-- ITEM -->
+                      <a class="nav-link" [routerLink]="[children.url]">
+                         <fa-icon class="nav-link-icon" icon={{children.icon}}></fa-icon>
+                        <span class="nav-link-title">{{ children.title }}</span>
+                      </a>
+  
+                      <!-- /  ITEM -->
+                    </ng-container>
+                    <!-- /GROUP -->
+                  </div>
+                </ng-container>
+              </ng-template>
+              <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+            </ng-container>
+          </div>
+        </ng-container>
+  
+        <!-- / Vertical Navigation Layout -->
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  {{!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111696254-1"></script> --}}
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-111696254-1');
+  </script>
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/assets/jabogfavicon.ico" />
+  <link href="/assets/fonts/Saira.css" rel="stylesheet">
+  <link href="/assets/fonts/Orbitron.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/gallery/basic.min.css" />
+  <link rel="stylesheet" href="/assets/gallery/dropzone.min.css" />
+  <link rel="stylesheet" href="/assets/loaders.min.css" />
+  <link href="/assets/fontawesome/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/tailwind.css" />
+
+  <title>Virtual JaBoG32</title>
+
+  <script src="/assets/scripts/jquery-1.10.2.min.js"></script>
+
+  <link rel="stylesheet" type="text/css"
+    href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+  <script>
+    window.addEventListener("load", function () {
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#000"
+          },
+          "button": {
+            "background": "#FFDA71"
+          }
+        },
+        "content": {
+          "message": "Diese Website benutzt Cookies. Wenn du die Website weiter nutzt, gehen wir von deinem Einverständnis aus.",
+          "dismiss": "OK",
+          "link": "Mehr hierzu",
+          "href": "/pages/datenschutz/"
+        }
+      })
+    });
+    function getAncestor(node, tagName) {
+      tagName = tagName.toUpperCase();
+      while (node) {
+        if (node.nodeType == 1 && node.nodeName == tagName) {
+          return node;
+        }
+        node = node.parentNode;
+      }
+      return null;
+    }
+    function toggle_menu_mobile() {
+      var nav = document.getElementById("main-nav")
+      if (nav.className.indexOf("hidden") == -1) {
+        nav.className += " hidden"
+      } else {
+        nav.className = nav.className.replace(" hidden", "")
+      }
+    }
+
+    function open_menu(ev) {
+      var parent = ev.parentElement
+      if (parent.className.indexOf("nav-open") == -1) {
+        parent.className += " nav-open"
+      } else {
+        parent.className = parent.className.replace(" nav-open", "")
+      }
+    }
+    function registerEvents() {
+      document.body.addEventListener("click", function (event) {
+        var target = getAncestor(event.target, "li");
+        if (target == null || target.className.indexOf("dropdown") == -1) {
+          var list = document.getElementsByClassName("nav-open");
+          for (var i = 0; i < list.length; i++) {
+            list[i].className = list[i].className.replace(" nav-open", "")
+          }
+        }
+      }, false);
+    }
+  </script>
+
+
+
+</head>
+
+<body class="bg-gray-200" onload="registerEvents()">
+  <div class="header container-fluid">
+    <!-- Logo Seite -->
+    <a href="/" id="logo"><img
+        class="fixed left-4 top-0 w-8 lg:w-1/6 lg:min-w-[80px] lg:max-w-[220px] lg:ml-[4%] lg:mt-[2.5%] z-50 lg:absolute block"
+        src="/assets/images/vJaBoG32-Logo.png" /></a>
+
+    <!-- HEADER IMAGE SLIDER -->
+    <div class="w-full h-[250px] md:h-[400px] mt-10 lg:mt-0 bg-gray-100 relative jabog-image-slider mb-10 lg:mb-0">
+      <div style="background-image:url(/assets/images/FA-18.jpg)">
+        <div><strong>Simulated Air Combat for DCS
+            World</strong>&nbsp;<br></br><small>A-A&nbsp;&nbsp;•&nbsp;&nbsp;A-G&nbsp;&nbsp;•&nbsp;&nbsp;Helicopter</small>
+        </div>
+      </div>
+      <div style="background-image:url(/assets/images/Mirage-3-Ship.jpg)">
+        <div><strong>The 321st TIGERS</strong>&nbsp;&nbsp;<br></br><small>Air to Air combat and realistic BVR
+            procedures</small></div>
+      </div>
+      <div style="background-image:url(/assets/images/A-10C-Echelon-v2.jpg)">
+        <div><strong>The 322nd FLYING MONSTERS</strong>&nbsp;&nbsp;<br></br><small>Air to Ground operations including
+            overall teamwork</small></div>
+      </div>
+      <div style="background-image:url(/assets/images/KA-50-Rifle.jpg)">
+        <div><strong>The 323rd VANGUARDS</strong>&nbsp;&nbsp;<br></br><small>Helicopter taskings like CAS, CSAR and
+            CARGO</small></div>
+      </div>
+      <div style="background-image:url(/assets/images/TWR-APP.jpg)">
+        <div><strong>Human Air Traffic Control:</strong>&nbsp;&nbsp;<br></br><small>Enjoy active TWR, AWACS and Mission
+            Control</small></div>
+      </div>
+      <div style="background-image:url(/assets/images/KA-50-Pit-onboard.jpg)">
+        <div><strong>Community:</strong>&nbsp;&nbsp;<br></br><small>Develop together with our members</small></div>
+      </div>
+      <div style="background-image:url(/assets/images/Eject.jpg)">
+        <div><strong>Fight´s on!</strong>&nbsp;&nbsp;<br></br><small>Stunning Multiplayer Scrambles</small></div>
+      </div>
+      <div style="background-image:url(/assets/images/A-10-C-Rifle.jpg)">
+        <div><strong>Combined Arms:</strong>&nbsp;&nbsp;<br></br><small>Advanced and unpredictable Mission AI</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {{!-- {{> globalnavigation }} --}}
+  <div class="lg:hidden block fixed bg-white shadow-md z-40 top-0 left-0 right-0 h-10 text-right">
+    <button type="button" class="w-8 h-10 mr-4" onclick="toggle_menu_mobile()" data-toggle="collapse"
+      data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <div id="main-nav" style="z-index: 1500;" class="lg:flex hidden flex-row navbar bg-white mb-10 shadow-md">
+    <div class="flex-auto"></div>
+    <ul class="flex flex-row">
+      <li{{#is page.name 'index' }} class="bg-amber-200" {{/is}}><a href="/">Home</a></li>
+        <li{{#is page.name 'news' }} class="bg-amber-200" {{/is}}><a href="/news">Neuigkeiten</a></li>
+          <li class="dropdown relative">
+            <a class="dropdown-toggle" onclick="open_menu(this)" role="button" aria-haspopup="true"
+              aria-expanded="false">
+              Geschwader
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <ul class="relative lg:absolute z-40 hidden bg-white shadow-md text-sm">
+              <li><a href="/page/staff">Geschwaderstab</a></li>
+              <li><a href="/pilots">Piloten</a></li>
+              <li><a href="/page/ranks">Ränge</a></li>
+              <li><a href="/page/regeln">Regeln</a></li>
+              <li><a href="/squadron/statistics">Abschussstatistik</a></li>
+              <li><a href="/squadron/deployments">Einsatzberichte</a></li>
+              <li><a href="/page/Einsatzplan">Einsatzplan</a></li>
+              <li role="separator" class="nav-divider"></li>
+              <li><a href="/page/Flugschule">Flugschule</a></li>
+              <li role="separator" class="nav-divider"></li>
+              <li><a href="/page/server">Server</a></li>
+            </ul>
+          </li>
+          <li{{#is page.name 'application' }} class="bg-amber-200" {{/is}}><a href="/home/application">Bewerbung</a>
+            </li>
+            <li><a href="/forum/index.php">Forum</a></li>
+            {{!-- <li{{#is page.name 'downloads' }} class="bg-amber-200" {{/is}}><a href="/page/downloads">Downloads</a>
+              </li> --}}
+              {{!-- <li{{#is page.name 'galerie' }} class="active" {{/is}}><a href="/">Bildergalerie</a></li> --}}
+                {{#isjabog user}}
+                <li{{#is @root.page.name 'intern' }} class="bg-amber-200" {{/is}}><a href="/intern/">Intern</a></li>
+                  {{/isjabog}}
+    </ul>
+    <div class="flex-auto"></div>
+    {{#if isAuthed}}
+    <ul class="flex flex-row">
+      <li{{#is page.name 'profile' }} class="bg-amber-200" {{/is}}><a href="/accounts/profile">{{ user.userName }}</a>
+        </li>
+        <li{{#is page.name 'logout' }} class="bg-amber-200" {{/is}}><a href="/accounts/logout">Logout</a></li>
+    </ul>
+    {{else}}
+    <ul class="flex flex-row">
+      <li{{#is page.name 'login' }} class="bg-amber-200" {{/is}}><a href="/accounts/login">Login</a></li>
+        <li{{#is page.name 'register' }} class="active" {{/is}}><a
+            href="https://virtual-jabog32.de/forum/ucp.php?mode=register">Registrieren</a></li>
+    </ul>
+    {{/if}}
+  </div>
+
+  <!--<div class="container-fluid fixed-nav no-padding" >
+        @Html.Partial("_navigation")
+    </div> -->
+  <div class="container-fluid body-content px-0 max-w-[1440px] m-auto pb-24 md:pb-20">
+    {{{ body }}}
+  </div>
+  <footer
+    class="mt-4 bg-white px-2 shadow-md text-black text-center pt-3 border border-gray-100 pb-1 absolute bottom-0 left-0 right-0">
+    <p>Copyright vJaBoG32 © 2003 - 2022&nbsp; •&nbsp; <a class="text-black" href="/page/impressum">Impressum</a>&nbsp; •
+      &nbsp;<a class="text-black" href="/page/datenschutz">Datenschutz</a>&nbsp; • &nbsp;<a class="text-black"
+        href="/accounts/login">Login</a></p>
+  </footer>
+</body>
+<script src="/assets/scripts/slider.js"></script>
+</body>
+
+</html>

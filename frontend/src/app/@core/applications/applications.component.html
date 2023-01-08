@@ -1,0 +1,32 @@
+<h1>Bewerbungen</h1>
+<div class="w90">
+    <mat-checkbox (change)="filterChange()" [(ngModel)]="onlyActive">Nur offene Bewerbungen anzeigen</mat-checkbox>
+    <br />
+    <br />
+</div>
+<table class="jabog32 w90">
+    <tr>
+        <th>Callsign</th>
+        <th>Muster</th>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Beworben am</th>
+        <th>Status</th>
+        <th># Kommentare</th>
+        <th>Letzter Kommentar</th>
+        <th class='actions'></th>
+    </tr>
+    <tr *ngFor="let item of filteredData; let i = index">
+       <td>{{ item.callsign }}</td>
+       <td>{{ item.aircraft?.name }}</td>
+       <td>{{ item.firstName }}</td>
+       <td>{{ item.lastName }}</td>
+       <td>{{ item.createdAt | date : 'dd.MM.yy HH:mm' }}</td>
+       <td>{{ item.status }}</td>
+       <td>{{ item.comments?.length }}</td>
+       <td>{{ getDateOfLast(item.comments) | date : 'dd.MM.yy HH:mm' }}</td>
+       <td class='actions'>
+           <a (click)='edit(item)'><fa-icon icon='edit'></fa-icon></a>
+       </td>
+    </tr>
+</table>

@@ -1,0 +1,47 @@
+<div class="bg-white md:w-4/5 mx-4 md:m-auto p-6">
+  <h2>Einsatzdetail</h2>
+  <h3 class="font-bold text-lg py-4">Details</h3>
+  <table>
+    <tr>
+      <td class="py-2 w-64">Name:</td>
+      <td class="py-2">{{ data.deployment.title }}</td>
+    </tr>
+    <tr>
+      <td class="py-2 w-64">Typ:</td>
+      <td class="py-2">{{ data.deployment.type }}</td>
+    </tr>
+    <tr>
+      <td class="py-2 w-64">Ort:</td>
+      <td class="py-2">{{ data.deployment.location }}</td>
+    </tr>
+    <tr>
+      <td class="py-2 w-64">Departure:</td>
+      <td class="py-2">{{ date data.deployment.departure }}</td>
+    </tr>
+    <tr>
+      <td class="py-2 w-64">Landing:</td>
+      <td class="py-2">{{ date data.deployment.landing }}</td>
+    </tr>
+    </table>
+  <h3 class="font-bold text-lg py-4">Teilnehmer</h3>
+  <table class="table table-striped w-full">
+    <tr>
+      <th class="text-left">Pilot</th>
+      <th class="text-left">Muster</th>
+      <th class="hidden md:table-cell text-right">Luftziele zerstört</th>
+      <th class="hidden md:table-cell text-right">Bodenziele zerstört</th>
+      <th class="hidden md:table-cell text-right">Strategische Ziele zerstört</th>
+      <th class="md:hidden text-right">L|B|S</th>
+    </tr>
+    {{#each data.deployment.logbookDetails}}
+    <tr>
+      <td><a href="/pilots/detail/{{pilot.id}}">{{pilot.user.userName}}</a></td>
+      <td>{{aircraft.name}}</td>
+      <td class="hidden md:table-cell text-right">{{airTargets}}</td>
+      <td class="hidden md:table-cell text-right">{{groundTargets}}</td>
+      <td class="hidden md:table-cell text-right">{{strategicTargets}}</td>
+      <td class="md:hidden text-right">{{airTargets}}|{{groundTargets}}|{{strategicTargets}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</div>
